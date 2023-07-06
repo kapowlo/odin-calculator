@@ -8,4 +8,33 @@
 body {
   height: 150vh;
   background-color: bisque;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+p.display-screen {
+  border: 2px solid black;
+  width: 800px;
+  height: 150px;
+  border-radius: 20px;
+
+  text-align: center; /*center the text horizontally left and right */
+  line-height: 150px; /*center the text vertically up and down */
+}
+.container {
+  height: 50%;
+  width: 800px;
+  margin-top: 50px;
+  border: 2px solid red;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+.btn {
+  margin: 20px 0 0 20px;
+  height: 120px;
+  width: 150px;
 }
