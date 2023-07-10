@@ -17,11 +17,13 @@ body {
 p.display-screen {
   border: 2px solid black;
   width: 800px;
-  height: 150px;
+  height: 200px;
   border-radius: 20px;
 
-  text-align: center; /*center the text horizontally left and right */
-  line-height: 150px; /*center the text vertically up and down */
+  /*center horizontally and vertically the text inside of display-screen paragraph  */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .container {
   height: 50%;
