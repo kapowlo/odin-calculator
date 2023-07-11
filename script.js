@@ -60,10 +60,11 @@ function operate(numberOne,operator,numberTwo,equalSign){
 //these paragraphs will hold the numbers and the operator once a btn is clicked
 // MUST append all three paragraphs to container
 const body=document.body;
-const firstNumberPara=document.createElement("p");
-const secondNumberPara=document.createElement("p");
-const operatorPara=document.createElement("p"); // for the + - * / arithmetic signs
-const storeEqualSignPara=document.createElement("p");// paragraph to store the equal sign
+
+let firstNumberPara=document.createElement("p");
+let operatorPara=document.createElement("p"); // for the + - * / arithmetic signs
+let secondNumberPara=document.createElement("p");
+let storeEqualSignPara=document.createElement("p");// paragraph to store the equal sign
 
 
 const displayPara=document.querySelector(".display-screen");
@@ -82,7 +83,7 @@ myButtons.forEach(btn=>{
     btn.addEventListener("click",event=>{
         switch(step){
             case 1:
-                firstNumberPara.textContent=event.target.textContent; 
+                firstNumberPara.textContent+=event.target.textContent ; 
                 step=2;
                 break;
             case 2:
@@ -90,7 +91,7 @@ myButtons.forEach(btn=>{
                 step=3;
                 break;
             case 3:
-                secondNumberPara.textContent=event.target.textContent;
+                secondNumberPara.textContent+=event.target.textContent ;
                 step=4;
                 break;
             case 4:
@@ -103,13 +104,35 @@ myButtons.forEach(btn=>{
 //Moved the operationBtn outside of the forEach loop, because the eventlistener was added multiple times
 const operationBtn=document.querySelector(".operation");
     operationBtn.addEventListener("click",result=>{
-        result=operate(firstNumberPara.textContent,operatorPara.textContent,secondNumberPara.textContent,"=");
-        console.log(firstNumberPara,operatorPara,secondNumberPara); 
-        console.log(result);
-       Array.from(displayPara.children).forEach(para=>{ //use array from to convert the htmlCollection/node list into an array loop through
-            para.remove();
-       });
-           
-         displayPara.append(result);
-         console.log(result);
+         if (step === 4) {
+    storeEqualSignPara.textContent = "=";
+    const result = operate(firstNumberPara.textContent, operatorPara.textContent, secondNumberPara.textContent, "=");
+    Array.from(displayPara.children).forEach(para => {
+      para.remove();
     });
+    displayPara.append(result);
+  }
+    });
+//remove paragraphs when clear button is pressed
+//currently doesn't work, as it permanently removes the paragraphs
+const clearBtn=document.querySelector(".clear");
+clearBtn.addEventListener("click",()=>{
+    Array.from(displayPara.children).forEach(para=>{ 
+        para.remove(); // removes the  paragraphs, but it doesn't seem to work after I press the equal sign
+       });
+       displayPara.textContent="" // removes the result after pressing equal sign
+       
+      
+       remakePara();// remake all of the paragraphs that I removed
+       step=1; //ensures that the code starts from the beginning when the user interacts with the calculator again
+       
+})
+function remakePara(){
+    firstNumberPara=document.createElement("p");
+    operatorPara=document.createElement("p"); // for the + - * / arithmetic signs
+    secondNumberPara=document.createElement("p");
+    storeEqualSignPara=document.createElement("p");// paragraph to store the equal sign
+    
+    displayPara.append(firstNumberPara,operatorPara,secondNumberPara,storeEqualSignPara) 
+    
+}
