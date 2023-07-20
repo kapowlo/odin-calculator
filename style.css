@@ -14,29 +14,45 @@ body {
   justify-content: flex-start;
   align-items: center;
 }
-p.display-screen {
+div.display-screen {
   border: 2px solid black;
   width: 800px;
-  height: 200px;
+  height: 110px;
   border-radius: 20px;
 
   /*center horizontally and vertically the text inside of display-screen paragraph  */
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
 }
+
+.currentNumber {
+  font-size: 2.25rem;
+  color: red;
+}
+.previousNumber {
+  font-size: 1.5rem;
+}
+
 .container {
   height: 50%;
   width: 800px;
-  margin-top: 50px;
+  margin-top: 25px;
   border: 2px solid red;
 
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(4, 1fr);
 }
 .btn {
-  margin: 20px 0 0 20px;
+  /*had to remove width property so that the equal button could span across multiple columns */
+  margin: 8px 20px 0 12px;
   height: 120px;
-  width: 150px;
+  border-radius: 50px;
+}
+
+.container .equal {
+  grid-column-start: 2;
+  grid-column-end: 6;
 }
