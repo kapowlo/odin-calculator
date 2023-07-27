@@ -61,9 +61,10 @@ clearButton.addEventListener("click",()=>{
 // when this button is clicked call compute() or calculate() function
 // this function will take one param and check for the operator sign and do the appropriate operation + - * /
 equalButton.addEventListener("click",()=>{
+    
     getResult()
     previousNumberPara.textContent="";
-    currentNumberPara.textContent=previousNumberValue;
+    currentNumberPara.textContent=previousNumberValue; 
   
 })
 
@@ -103,7 +104,11 @@ function getResult(){
     // call this func  when equal button is pressed
     previousNumberValue=Number(previousNumberValue);
     currentNumberValue=Number(currentNumberValue);
-    
+    if(!currentNumberValue && !previousNumberValue){ // if user just presses equal without entering number display 0 then stop execution
+        currentNumberValue=""
+        return;
+    }
+   
     if (operatorValue==="+"){
          previousNumberValue += currentNumberValue
     }else if(operatorValue==="-"){
