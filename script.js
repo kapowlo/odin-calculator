@@ -57,11 +57,15 @@ clearButton.addEventListener("click",()=>{
 
 
 
-// create event listener for equal button
-// when this button is clicked call compute() or calculate() function
-// this function will take one param and check for the operator sign and do the appropriate operation + - * /
 equalButton.addEventListener("click",()=>{
-    
+    //conditional test  fixes annoying bug when user presses a number button and then = right after
+    // the result would be 0 instead of the number
+    if(!operatorValue && !previousNumberValue){ 
+        console.log("test")
+        previousNumberPara.textContent=currentNumberValue;
+        currentNumberPara.textContent="";
+        return;
+   }
     getResult()
     previousNumberPara.textContent="";
     currentNumberPara.textContent=previousNumberValue; 
@@ -76,7 +80,7 @@ decimalButton.addEventListener("click",()=>{
 
 
 function getNumber(num){
-    //call when user click on number btn
+    //call when user clicks on number btn
     //stores a number inside currentNumber variable then returns the number
     //also allows user to  input large numbers like 2987112
     currentNumberValue+=num;
