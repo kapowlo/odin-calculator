@@ -61,7 +61,6 @@ equalButton.addEventListener("click",()=>{
     //conditional test  fixes annoying bug when user presses a number button and then = right after
     // the result would be 0 instead of the number
     if(!operatorValue && !previousNumberValue){ 
-        console.log("test")
         previousNumberPara.textContent=currentNumberValue;
         currentNumberPara.textContent="";
         return;
@@ -124,7 +123,7 @@ function getResult(){
     else if(operatorValue==="/"){
          previousNumberValue /= currentNumberValue     
     }
-    previousNumberValue=previousNumberValue.toString();
+    previousNumberValue = Math.floor(previousNumberValue * 10000) / 10000; // rounds down the result to four decimal places 
     currentNumberValue=previousNumberValue.toString();
     
 }
