@@ -17,6 +17,7 @@ const previousNumberPara = document.querySelector(".previousNumber")
 
 //select the remaining buttons
 const clearButton=document.querySelector(".clear")
+const lastClearButton=document.querySelector(".last-clear")
 const equalButton=document.querySelector(".equal")
 const decimalButton=document.querySelector(".decimal") // try  to implement it 
 
@@ -54,6 +55,19 @@ clearButton.addEventListener("click",()=>{
     previousNumberPara.textContent=previousNumberValue;
     currentNumberPara.textContent=currentNumberValue;
 })
+
+// this will clear the last entry so if user makes a mistake 
+//they can press this button to clear last number entered
+lastClearButton.addEventListener("click",()=>{
+    //extract the everything except the last character and store in variable
+    //this will remove the last number and keep everything else
+    currentNumberPara.textContent=currentNumberPara.textContent.slice(0,-1);
+
+    //fixes a problem when the user removes the last entry 
+    //then enters a number, the number that was removed shows up
+    currentNumberValue=currentNumberPara.textContent 
+})
+
 
 
 
