@@ -210,4 +210,19 @@ window.addEventListener("keydown",(e)=>{
         currentNumberPara.textContent=previousNumberValue;
         
     }
+    if(e.key==="."){
+        if(!currentNumberValue.includes(".")){
+            currentNumberValue+="."
+        }
+    }
+    if(e.key==="Enter"){
+         if(!operatorValue && !previousNumberValue){ 
+            previousNumberPara.textContent=currentNumberValue
+            currentNumberPara.textContent=""
+            return
+       } 
+        getResult();
+        previousNumberPara.textContent=""
+        currentNumberPara.textContent=previousNumberValue 
+    }
 })
