@@ -205,6 +205,11 @@ window.addEventListener("keydown",(e)=>{
         currentNumberPara.textContent=currentNumberValue 
     }
     if(e.key==="="){
+        if(!operatorValue && !previousNumberValue){ 
+            previousNumberPara.textContent=currentNumberValue
+            currentNumberPara.textContent=""
+            return
+        }
         getResult()
         previousNumberPara.textContent=""
         currentNumberPara.textContent=previousNumberValue;
@@ -216,13 +221,19 @@ window.addEventListener("keydown",(e)=>{
         }
     }
     if(e.key==="Enter"){
-         if(!operatorValue && !previousNumberValue){ 
+        //the line 226 fixes a bug where after clicking on the Clear button and then entering any numbers and pressing the Enter key 
+        //nothing would be displayed in the calculator
+         e.preventDefault()  
+
+        if(!operatorValue && !previousNumberValue){ 
             previousNumberPara.textContent=currentNumberValue
             currentNumberPara.textContent=""
             return
-       } 
-        getResult();
+        }
+        getResult()
         previousNumberPara.textContent=""
-        currentNumberPara.textContent=previousNumberValue 
+        currentNumberPara.textContent=previousNumberValue;
+        
     }
+   
 })
