@@ -7,7 +7,8 @@
 
 body {
   height: 150vh;
-  background-color: bisque;
+  background-color: #023b11; /*fallback if browser does'nt support linear-gradient */
+  background: linear-gradient(to right, #023b11, #124417);
 
   display: flex;
   flex-direction: column;
@@ -15,7 +16,8 @@ body {
   align-items: center;
 }
 div.display-screen {
-  border: 2px solid black;
+  border: 4px dashed black;
+  margin-top: 1em;
   width: 800px;
   height: 110px;
   border-radius: 20px;
@@ -29,17 +31,17 @@ div.display-screen {
 
 .currentNumber {
   font-size: 2.25rem;
-  color: red;
+  color: black;
+  font-weight: bold;
 }
 .previousNumber {
-  font-size: 1.5rem;
+  font-size: 1.55rem;
 }
 
 .container {
   height: 50%;
   width: 800px;
   margin-top: 25px;
-  border: 2px solid red;
 
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -50,9 +52,24 @@ div.display-screen {
   margin: 8px 20px 0 12px;
   height: 120px;
   border-radius: 50px;
+
+  text-shadow: 0.5px 0.5px 0 black;
+  font-size: 1.35rem;
+  font-weight: bold;
+  color: #187f21;
 }
 
 .container .equal {
   grid-column-start: 3;
   grid-column-end: 6;
+}
+
+p#copyright a {
+  /*target the link inside the paragraph with the ID "copyright */
+  color: #f8a85d;
+  font-size: 1.12rem;
+}
+p#copyright a:hover {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
